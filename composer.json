@@ -1,0 +1,27 @@
+{
+    "name": "colin/the-scraper",
+    "description": "File and URL scraper",
+    "type": "project",
+    "authors": [
+        {
+            "name": "colin",
+            "email": "colinmichaels@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^3.1",
+        "nesbot/carbon": "^2.11",
+        "filp/whoops": "^2.3",
+        "phpunit/phpunit": "^7.5",
+        "matthiasmullie/minify": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "OGK\\": "inc/classes"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2",
+        "symfony/console": "^4.2"
+    }
+}
