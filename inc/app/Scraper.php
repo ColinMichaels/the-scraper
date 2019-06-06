@@ -13,15 +13,23 @@ namespace CM;
 
 use CM\FileTypes\HTML;
 
+interface Extension{
+   public function __construct($path,$ext);
+
+
+}
+
 class Scraper {
 
-	public $path, $extensions, $limit;
+	public $path, $extensions, $limit, $offset;
 
 	private $options = array();
 
 	public $files = array();
 
-	public function __construct($path, $exts) { // todo: Add $options array or create an options class that would handle presetting defaults if not options passed so it can be used to manipulate how the scrapper scrapes!
+	private $html, $filtered;
+
+	public function __construct($path, ? string $exts = null) { // todo: Add $options array or create an options class that would handle presetting defaults if not options passed so it can be used to manipulate how the scrapper scrapes!
 
 		$this->path = new Path($path);
 
@@ -31,7 +39,13 @@ class Scraper {
 
 		$this->limit = $options->limit ?? -1;
 
+		$this->offset = $options->offset ?? -1;
+
 		$this->files = $this->getFilesFromFolder($this->path);
+
+		$this->filtered = $this->getFilteredNullFiles($this->limit);
+
+		$this->html = $this->getHtml($this->filtered);
 
 	}
 
@@ -40,28 +54,34 @@ class Scraper {
 		echo "Destroying ". __CLASS__ . "\n";
 	}
 
-	public function scrape(? int $limit = -1){
+	public function scrape( ? int $limit = -1, ? int $offset= -1){
 
 		// return $this->inExtensionsArray();  // shows files with null values for files not in list
-
-		$this->files = ($limit)? array_slice($this->files,0 , $limit) : $this->files;   // Limit and set files to limit
+		$this->offset = ($offset)??0;
+		$this->files = ($limit)? array_slice($this->files,$offset,$limit) : $this->files;   // Limit and set files to limit
 
 		$filtered = $this->getFilteredNullFiles($limit);
 
-		dd($filtered);
 
-		$html = new HTML;
+		$html = $this->getHtml($filtered);
 
-		$file = 0;
-		return $html->load($filtered[$file]);
+		 return $html;
 
 
-		return $this->getFilteredNullFiles($limit);  // gets the filters list with nulls popped from the array
+
+		//return $this->getFilteredNullFiles($limit);  // gets the filters list with nulls popped from the array
 
 	}
 
-	public function getHtml($file){
-		return file_get_contents($file);
+
+	public function getHtml(){
+		$html = new HTML;
+		$file = 0;
+		$filtered = array_values($this->filtered);
+
+		$path = $filtered[$file];
+
+		return $html->load($path->local_path);
 	}
 
 	/**
@@ -100,7 +120,8 @@ class Scraper {
 
 	private function getFilteredNullFiles(){
 
-		return array_filter($this->inExtensionsArray());
+		return
+			array_filter($this->inExtensionsArray());
 	}
 
 	private function inExtensionsArray(){

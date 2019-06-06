@@ -30,13 +30,15 @@ if ( strpos( getenv( 'app_env' ), 'dev' ) ) {
 
 $scraper = new Scraper(  CM_PUBLIC_PATH.'/site-files/dw' , 'html');
 
-//$scraper = new Scraper(  'https://ogkcreative.com' );
+//$scraper = new Scraper(  'https://ogkcreative.com');
 
 dump( $scraper );
 
-$all_files = $scraper->scrape(1);
+$all_files = $scraper->scrape(20,20);
 
-dump( $all_files );
+$contents = $all_files->find('div');
+
+dump( $contents );
 
 
 
