@@ -41,10 +41,6 @@ class ComposerStaticInit2c57ad1527b6216b58acb9497a38c1e8
         array (
             'Psr\\Log\\' => 8,
         ),
-        'O' => 
-        array (
-            'OGK\\' => 4,
-        ),
         'M' => 
         array (
             'MatthiasMullie\\PathConverter\\' => 29,
@@ -59,6 +55,7 @@ class ComposerStaticInit2c57ad1527b6216b58acb9497a38c1e8
         'C' => 
         array (
             'Carbon\\' => 7,
+            'CM\\' => 3,
         ),
     );
 
@@ -117,10 +114,6 @@ class ComposerStaticInit2c57ad1527b6216b58acb9497a38c1e8
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
-        'OGK\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/inc/classes',
-        ),
         'MatthiasMullie\\PathConverter\\' => 
         array (
             0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
@@ -145,9 +138,20 @@ class ComposerStaticInit2c57ad1527b6216b58acb9497a38c1e8
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'CM\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/inc/app',
+        ),
     );
 
     public static $prefixesPsr0 = array (
+        's' => 
+        array (
+            'stringEncode' => 
+            array (
+                0 => __DIR__ . '/..' . '/paquettg/string-encode/src',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -157,6 +161,10 @@ class ComposerStaticInit2c57ad1527b6216b58acb9497a38c1e8
             'PhpOption\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
+            ),
+            'PHPHtmlParser' => 
+            array (
+                0 => __DIR__ . '/..' . '/paquettg/php-html-parser/src',
             ),
         ),
     );
