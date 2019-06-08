@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'stringEncode' => array($vendorDir . '/paquettg/string-encode/src'),
+    'SimpleExcel\\' => array($vendorDir . '/faisalman/simple-excel-php/src'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
     'PHPHtmlParser' => array($vendorDir . '/paquettg/php-html-parser/src'),

@@ -6,7 +6,7 @@
  * Time: 12:24
  * adopted from  Illuminate\Support\Debug;
  */
-namespace OGK\Debug;
+namespace CM\Debug;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
 
@@ -27,4 +27,5 @@ class Dumper {
 			var_dump($value);
 		}
 	}
+
 }

@@ -9,7 +9,8 @@
 
 namespace CM;
 
-use OGK\Debug\Dumper;
+use CM\Debug\Dumper;
+use CM\Debug\HtmlDumper;
 
 class Ultilities {
 
@@ -20,6 +21,13 @@ class Ultilities {
 	 * Can be deleted on production
 	 */
 
+	public $theme;
+
+	public function __construct(? string $theme = 'dark') {
+
+		$this->theme = $theme;
+	}
+
 	public static function dd(...$args) {
 
 		http_response_code(500);
@@ -29,6 +37,10 @@ class Ultilities {
 		}
 
 		die(1);
+	}
+
+	private function getTheme(){
+		return $this->theme;
 	}
 
 	public static function dump(...$args) {

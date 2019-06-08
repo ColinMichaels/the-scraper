@@ -15,10 +15,10 @@ class URL {
 	protected $attr, $is_secure;
 
 
-	public function __construct( $url ) {
+	public function __construct($url) {
 
 		$this->url      = $url;
-		$this->attr     = parse_url( $this->url );
+		$this->attr     = parse_url( $url );
 		$this->scheme   = $this->attr['scheme'] ?? null;
 		$this->host     = $this->attr['host'] ??  $_SERVER['REMOTE_HOST'] ?? null;
 		$this->port     = $this->attr['port'] ?? $_SERVER['REMOTE_PORT'] ?? null;
@@ -26,12 +26,8 @@ class URL {
 		$this->path     = $this->attr['path'] ?? null;
 		$this->query    = $this->attr['query'] ?? null;
 		$this->fragment = $this->attr['fragment'] ?? null;
-		$this->is_secure = ($this->scheme == 'https') ?? false;
+		$this->is_secure = ($this->scheme === 'https') ?? false;
 
-	}
-
-	public function toArray(){
-		return $this->attr;
 	}
 
 	public function unparse( $url ) {

@@ -1,5 +1,72 @@
 [
     {
+        "name": "cocur/slugify",
+        "version": "v3.2",
+        "version_normalized": "3.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cocur/slugify.git",
+            "reference": "d41701efe58ba2df9cae029c3d21e1518cc6780e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cocur/slugify/zipball/d41701efe58ba2df9cae029c3d21e1518cc6780e",
+            "reference": "d41701efe58ba2df9cae029c3d21e1518cc6780e",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "laravel/framework": "~5.1",
+            "latte/latte": "~2.2",
+            "league/container": "^2.2.0",
+            "mikey179/vfsstream": "~1.6",
+            "mockery/mockery": "~0.9",
+            "nette/di": "~2.2",
+            "phpunit/phpunit": "~4.8.36|~5.2",
+            "pimple/pimple": "~1.1",
+            "plumphp/plum": "~0.1",
+            "silex/silex": "~1.3",
+            "symfony/config": "~2.4|~3.0|~4.0",
+            "symfony/dependency-injection": "~2.4|~3.0|~4.0",
+            "symfony/http-kernel": "~2.4|~3.0|~4.0",
+            "twig/twig": "~1.26|~2.0",
+            "zendframework/zend-modulemanager": "~2.2",
+            "zendframework/zend-servicemanager": "~2.2",
+            "zendframework/zend-view": "~2.2"
+        },
+        "time": "2019-01-31T20:38:55+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Cocur\\Slugify\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ivo Bathke",
+                "email": "ivo.bathke@gmail.com"
+            },
+            {
+                "name": "Florian Eckerstorfer",
+                "email": "florian@eckerstorfer.co",
+                "homepage": "https://florian.ec"
+            }
+        ],
+        "description": "Converts a string into a slug.",
+        "keywords": [
+            "slug",
+            "slugify"
+        ]
+    },
+    {
         "name": "doctrine/instantiator",
         "version": "1.2.0",
         "version_normalized": "1.2.0.0",
@@ -55,6 +122,63 @@
         "keywords": [
             "constructor",
             "instantiate"
+        ]
+    },
+    {
+        "name": "faisalman/simple-excel-php",
+        "version": "v0.3.15",
+        "version_normalized": "0.3.15.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/faisalman/simple-excel-php.git",
+            "reference": "c392d9ee34cce210f034c9a9ef814f635320351c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/faisalman/simple-excel-php/zipball/c392d9ee34cce210f034c9a9ef814f635320351c",
+            "reference": "c392d9ee34cce210f034c9a9ef814f635320351c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2013-03-21T19:48:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "SimpleExcel\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Faisal Salman",
+                "email": "fyzlman@gmail.com",
+                "homepage": "http://faisalman.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Easily parse / convert / write between Microsoft Excel XML / CSV / TSV / HTML / JSON / etc formats",
+        "homepage": "http://faisalman.github.com/simple-excel-php",
+        "keywords": [
+            "converter",
+            "csv",
+            "document",
+            "excel",
+            "html",
+            "json",
+            "parser",
+            "spreadsheet",
+            "tsv",
+            "writer",
+            "xml"
         ]
     },
     {
@@ -121,119 +245,6 @@
         ]
     },
     {
-        "name": "matthiasmullie/minify",
-        "version": "1.3.61",
-        "version_normalized": "1.3.61.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/matthiasmullie/minify.git",
-            "reference": "d5acb8ce5b6acb7d11bafe97cecc533f6e4fd751"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/d5acb8ce5b6acb7d11bafe97cecc533f6e4fd751",
-            "reference": "d5acb8ce5b6acb7d11bafe97cecc533f6e4fd751",
-            "shasum": ""
-        },
-        "require": {
-            "ext-pcre": "*",
-            "matthiasmullie/path-converter": "~1.1",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "~2.0",
-            "matthiasmullie/scrapbook": "~1.0",
-            "phpunit/phpunit": "~4.8"
-        },
-        "suggest": {
-            "psr/cache-implementation": "Cache implementation to use with Minify::cache"
-        },
-        "time": "2018-11-26T23:10:39+00:00",
-        "bin": [
-            "bin/minifycss",
-            "bin/minifyjs"
-        ],
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "MatthiasMullie\\Minify\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Matthias Mullie",
-                "email": "minify@mullie.eu",
-                "homepage": "http://www.mullie.eu",
-                "role": "Developer"
-            }
-        ],
-        "description": "CSS & JavaScript minifier, in PHP. Removes whitespace, strips comments, combines files (incl. @import statements and small assets in CSS files), and optimizes/shortens a few common programming patterns.",
-        "homepage": "http://www.minifier.org",
-        "keywords": [
-            "JS",
-            "css",
-            "javascript",
-            "minifier",
-            "minify"
-        ]
-    },
-    {
-        "name": "matthiasmullie/path-converter",
-        "version": "1.1.2",
-        "version_normalized": "1.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/matthiasmullie/path-converter.git",
-            "reference": "5e4b121c8b9f97c80835c1d878b0812ba1d607c9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/matthiasmullie/path-converter/zipball/5e4b121c8b9f97c80835c1d878b0812ba1d607c9",
-            "reference": "5e4b121c8b9f97c80835c1d878b0812ba1d607c9",
-            "shasum": ""
-        },
-        "require": {
-            "ext-pcre": "*",
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.8"
-        },
-        "time": "2018-10-25T15:19:41+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "MatthiasMullie\\PathConverter\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Matthias Mullie",
-                "email": "pathconverter@mullie.eu",
-                "homepage": "http://www.mullie.eu",
-                "role": "Developer"
-            }
-        ],
-        "description": "Relative path converter",
-        "homepage": "http://github.com/matthiasmullie/path-converter",
-        "keywords": [
-            "converter",
-            "path",
-            "paths",
-            "relative"
-        ]
-    },
-    {
         "name": "myclabs/deep-copy",
         "version": "1.9.1",
         "version_normalized": "1.9.1.0",
@@ -281,68 +292,6 @@
             "duplicate",
             "object",
             "object graph"
-        ]
-    },
-    {
-        "name": "nesbot/carbon",
-        "version": "2.19.0",
-        "version_normalized": "2.19.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "c3545b39197d314205226ac3c33cb4db99aa54ab"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/c3545b39197d314205226ac3c33cb4db99aa54ab",
-            "reference": "c3545b39197d314205226ac3c33cb4db99aa54ab",
-            "shasum": ""
-        },
-        "require": {
-            "ext-json": "*",
-            "php": "^7.1.8 || ^8.0",
-            "symfony/translation": "^3.4 || ^4.0"
-        },
-        "require-dev": {
-            "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
-            "kylekatarnls/multi-tester": "^1.1",
-            "phpmd/phpmd": "^2.6",
-            "phpstan/phpstan": "^0.11",
-            "phpunit/phpunit": "^7.5 || ^8.0",
-            "squizlabs/php_codesniffer": "^3.4"
-        },
-        "time": "2019-05-30T10:15:05+00:00",
-        "type": "library",
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "Carbon\\Laravel\\ServiceProvider"
-                ]
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Carbon\\": "src/Carbon/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Brian Nesbitt",
-                "email": "brian@nesbot.com",
-                "homepage": "http://nesbot.com"
-            }
-        ],
-        "description": "A simple API extension for DateTime.",
-        "homepage": "http://carbon.nesbot.com",
-        "keywords": [
-            "date",
-            "datetime",
-            "time"
         ]
     },
     {
@@ -988,17 +937,17 @@
     },
     {
         "name": "phpunit/php-timer",
-        "version": "2.1.1",
-        "version_normalized": "2.1.1.0",
+        "version": "2.1.2",
+        "version_normalized": "2.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/php-timer.git",
-            "reference": "8b389aebe1b8b0578430bda0c7c95a829608e059"
+            "reference": "1038454804406b0b5f5f520358e78c1c2f71501e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/8b389aebe1b8b0578430bda0c7c95a829608e059",
-            "reference": "8b389aebe1b8b0578430bda0c7c95a829608e059",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/1038454804406b0b5f5f520358e78c1c2f71501e",
+            "reference": "1038454804406b0b5f5f520358e78c1c2f71501e",
             "shasum": ""
         },
         "require": {
@@ -1007,7 +956,7 @@
         "require-dev": {
             "phpunit/phpunit": "^7.0"
         },
-        "time": "2019-02-20T10:12:59+00:00",
+        "time": "2019-06-07T04:22:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1813,17 +1762,17 @@
     },
     {
         "name": "symfony/console",
-        "version": "v4.3.0",
-        "version_normalized": "4.3.0.0",
+        "version": "v4.3.1",
+        "version_normalized": "4.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/console.git",
-            "reference": "707b619d2c3bedf0224d56f95f77dabc60102305"
+            "reference": "d50bbeeb0e17e6dd4124ea391eff235e932cbf64"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/console/zipball/707b619d2c3bedf0224d56f95f77dabc60102305",
-            "reference": "707b619d2c3bedf0224d56f95f77dabc60102305",
+            "url": "https://api.github.com/repos/symfony/console/zipball/d50bbeeb0e17e6dd4124ea391eff235e932cbf64",
+            "reference": "d50bbeeb0e17e6dd4124ea391eff235e932cbf64",
             "shasum": ""
         },
         "require": {
@@ -1855,7 +1804,7 @@
             "symfony/lock": "",
             "symfony/process": ""
         },
-        "time": "2019-05-27T08:16:38+00:00",
+        "time": "2019-06-05T13:25:51+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2187,155 +2136,18 @@
         ]
     },
     {
-        "name": "symfony/translation",
-        "version": "v4.3.0",
-        "version_normalized": "4.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/translation.git",
-            "reference": "f7e90f0f90e354f99f20aa9ead95a1b201b126f9"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/f7e90f0f90e354f99f20aa9ead95a1b201b126f9",
-            "reference": "f7e90f0f90e354f99f20aa9ead95a1b201b126f9",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.1.3",
-            "symfony/polyfill-mbstring": "~1.0",
-            "symfony/translation-contracts": "^1.1.2"
-        },
-        "conflict": {
-            "symfony/config": "<3.4",
-            "symfony/dependency-injection": "<3.4",
-            "symfony/yaml": "<3.4"
-        },
-        "provide": {
-            "symfony/translation-implementation": "1.0"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/config": "~3.4|~4.0",
-            "symfony/console": "~3.4|~4.0",
-            "symfony/dependency-injection": "~3.4|~4.0",
-            "symfony/finder": "~2.8|~3.0|~4.0",
-            "symfony/http-kernel": "~3.4|~4.0",
-            "symfony/intl": "~3.4|~4.0",
-            "symfony/service-contracts": "^1.1.2",
-            "symfony/var-dumper": "~3.4|~4.0",
-            "symfony/yaml": "~3.4|~4.0"
-        },
-        "suggest": {
-            "psr/log-implementation": "To use logging capability in translator",
-            "symfony/config": "",
-            "symfony/yaml": ""
-        },
-        "time": "2019-05-28T09:09:27+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.3-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Translation\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Translation Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "symfony/translation-contracts",
-        "version": "v1.1.2",
-        "version_normalized": "1.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/translation-contracts.git",
-            "reference": "93597ce975d91c52ebfaca1253343cd9ccb7916d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/93597ce975d91c52ebfaca1253343cd9ccb7916d",
-            "reference": "93597ce975d91c52ebfaca1253343cd9ccb7916d",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^7.1.3"
-        },
-        "suggest": {
-            "symfony/translation-implementation": ""
-        },
-        "time": "2019-05-27T08:16:38+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Contracts\\Translation\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Generic abstractions related to translation",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "abstractions",
-            "contracts",
-            "decoupling",
-            "interfaces",
-            "interoperability",
-            "standards"
-        ]
-    },
-    {
         "name": "symfony/var-dumper",
-        "version": "v4.3.0",
-        "version_normalized": "4.3.0.0",
+        "version": "v4.3.1",
+        "version_normalized": "4.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/var-dumper.git",
-            "reference": "2fd2ecf7913fb96f0c2e941ca15bb702184c6574"
+            "reference": "f974f448154928d2b5fb7c412bd23b81d063f34b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2fd2ecf7913fb96f0c2e941ca15bb702184c6574",
-            "reference": "2fd2ecf7913fb96f0c2e941ca15bb702184c6574",
+            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/f974f448154928d2b5fb7c412bd23b81d063f34b",
+            "reference": "f974f448154928d2b5fb7c412bd23b81d063f34b",
             "shasum": ""
         },
         "require": {
@@ -2358,7 +2170,7 @@
             "ext-intl": "To show region name in time zone dump",
             "symfony/console": "To use the ServerDumpCommand and/or the bin/var-dump-server script"
         },
-        "time": "2019-05-01T12:55:49+00:00",
+        "time": "2019-06-05T02:08:12+00:00",
         "bin": [
             "Resources/bin/var-dump-server"
         ],

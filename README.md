@@ -1,6 +1,8 @@
 ##
 
-New Up a scraper
+Uses 
+
+New Up a scraper  PHPHtmlParser\Dom; https://github.com/paquettg/php-html-parser
 
 -- Requires :  URL | PATH  
 

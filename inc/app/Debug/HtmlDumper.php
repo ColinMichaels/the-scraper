@@ -6,7 +6,7 @@
  * Time: 12:25
  */
 
-namespace OGK\Debug;
+namespace CM\Debug;
 
 use Symfony\Component\VarDumper\Dumper\HtmlDumper as SymfonyHtmlDumper;
 

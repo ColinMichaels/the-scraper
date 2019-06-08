@@ -9,79 +9,102 @@
 
 namespace CM;
 
-//use CM\ScraperInterface;
-
 use CM\FileTypes\HTML;
+use Cocur\Slugify\Slugify;
+use CM\Exports\PagesExport;
 
-interface Extension{
-   public function __construct($path,$ext);
+interface ScraperInterface {
 
-
+	public function scrape( &$limit );
 }
 
 class Scraper {
 
-	public $path, $extensions, $limit, $offset;
+	public $path, $extensions;
+
+	private $limit, $offset;
 
 	private $options = array();
 
 	public $files = array();
 
-	private $html, $filtered;
+	private $filtered = array();
 
-	public function __construct($path, ? string $exts = null) { // todo: Add $options array or create an options class that would handle presetting defaults if not options passed so it can be used to manipulate how the scrapper scrapes!
+	public $pages = array();
 
-		$this->path = new Path($path);
+	public function __construct( $path, ? string $exts = null ) { // todo: Add $options array or create an options class that would handle presetting defaults if not options passed so it can be used to manipulate how the scrapper scrapes!
 
-		$this->extensions = (is_array($exts))? $exts : array($exts);
+		$this->path = new Path( $path );
+
+		$this->extensions = new Extension($exts);
 
 		$this->options = array(); //  todo: Make options CLASS
 
-		$this->limit = $options->limit ?? -1;
+		$this->limit = $options->limit ?? - 1;
 
-		$this->offset = $options->offset ?? -1;
+		$this->offset = $options->offset ?? - 1;
 
-		$this->files = $this->getFilesFromFolder($this->path);
+		$this->files = $this->getFilesFromFolder( $this->path );
 
-		$this->filtered = $this->getFilteredNullFiles($this->limit);
+		$this->filtered = array_values( $this->getFilteredNullFiles( $this->limit ) );
 
-		$this->html = $this->getHtml($this->filtered);
-
-	}
-
-	public function __destruct() {
-		// TODO: Implement __destruct() method.
-		echo "Destroying ". __CLASS__ . "\n";
-	}
-
-	public function scrape( ? int $limit = -1, ? int $offset= -1){
-
-		// return $this->inExtensionsArray();  // shows files with null values for files not in list
-		$this->offset = ($offset)??0;
-		$this->files = ($limit)? array_slice($this->files,$offset,$limit) : $this->files;   // Limit and set files to limit
-
-		$filtered = $this->getFilteredNullFiles($limit);
-
-
-		$html = $this->getHtml($filtered);
-
-		 return $html;
-
-
-
-		//return $this->getFilteredNullFiles($limit);  // gets the filters list with nulls popped from the array
+		//$this->pages = new Page($this->path->path,implode(",",$this->extensions->extensions));
 
 	}
 
+	public function scrape( ? int $limit = - 1, ? int $offset = - 1 ) {
 
-	public function getHtml(){
-		$html = new HTML;
-		$file = 0;
-		$filtered = array_values($this->filtered);
+		$this->setOffset(( $offset ) ?? 0);
 
-		$path = $filtered[$file];
+		$this->setLimit(($limit)?? -1);
 
-		return $html->load($path->local_path);
+		$this->files = ( $limit ) ? array_slice( $this->files, $offset, $limit ) : $this->files;   // Limit and set files to limit
+
+		$this->filtered = array_values( $this->getFilteredNullFiles( $limit ) );
+
+		$this->allPages();
+
+//		$this->createCsv();
+
+		return "done";
+	}
+
+	public function allPages(){
+		$pages = array();
+		$i = 0;
+		foreach ( $this->filtered as $file ) {
+			$dom       = new HTML;
+			$file_path = $this->path->path . '/' . $file;
+			$dom->load( $file_path );
+
+			$meta_tags = get_meta_tags( $file_path );
+
+			$page              = new Page($this->path->path, $this->extensions);
+			$page->id          = $i;
+			$page->title       = $dom->find( 'title' )->innerHtml;
+			$page->content     = $dom->find( '.bodyText' )->innerHtml;
+			$page->slugify     = (new Slugify())->slugify($page->title);
+			$page->description = $meta_tags['description'] ?? null;
+			$page->keywords    = $meta_tags['keywords'] ?? null;
+			$page->robots      = $meta_tags['robots'] ?? null;
+			$page->links       = $dom->find( 'a' )->outerHtml;
+			$page->videos      = (count($dom->find( 'iframe' ))) ? $dom->find( 'iframe' )->innerHtml : null;
+			$page->old_path    = current($this->filtered);
+
+			array_push($pages, $page);
+
+			$i++;
+		}
+		
+		 $this->setPages($pages);
+	}
+
+
+	/**
+	 * @param int $offset
+	 */
+	public function setOffset( int $offset ): void {
+		$this->offset = $offset;
 	}
 
 	/**
@@ -98,59 +121,105 @@ class Scraper {
 		$this->limit = $limit;
 	}
 
+	/**
+	 * @return array
+	 */
+	public function getPages(): array {
+		return $this->pages;
+	}
 
-	public function getFilesFromFolder(){
-		try{
+	/**
+	 * @param array $pages
+	 */
+	public function setPages( array $pages ): void {
+		$this->pages = $pages;
+	}
+
+	public function createCsv(){
+
+		(new PagesExport)->export();
+
+	}
+
+	public function getFilesFromFolder() {
+		try {
 			return
 				array_diff(
-						scandir($this->path->path),
-						['..','.', '.DS_Store']
-					);
+					scandir( $this->path->path ),
+					[ '..', '.', '.DS_Store' ]
+				);
 
-		}catch(Exception $exception){
+		} catch ( Exception $exception ) {
 
-			dd($exception);
+			dd( $exception );
 
 		}
 	}
 
-	public function getFiltered(){
+	/**
+	 * @return array
+	 */
+
+	public function getFiltered() {
 		return $this->getFilteredNullFiles();
 	}
 
-	private function getFilteredNullFiles(){
+	/**
+	 * @return array
+	 *
+	 * gets the filters list with nulls popped from the array
+	 *
+	 */
+
+	private function getFilteredNullFiles() {
 
 		return
-			array_filter($this->inExtensionsArray());
+			array_filter( $this->inExtensionsArray() );
 	}
 
-	private function inExtensionsArray(){
+	/**
+	 * @return array
+	 *
+	 *  shows files with null values for files not in list
+	 */
 
-		   return array_map(function($file){
-			 if(in_array($this->getFileExtension($file), $this->extensions)){
-			 	return new Path($file);
-			 }
-		   }, $this->files);
+	private function inExtensionsArray() {
+
+		return array_map( function ( $file ) {
+			if ( in_array( $this->getFileExtension( $file ), $this->extensions->extensions ) ) {
+				return  $file;
+			}
+		}, $this->files );
 	}
 
-	private function getFileExtension($file){
+	private function getFileExtension( $file ) {
 
-		return ($file)? (pathinfo($file)['extension']?? null) : null;
+		return ( $file ) ? ( pathinfo( $file )['extension'] ?? null ) : null;
 	}
 
-	/*private function filterArray($arr,$filter){  // This is more compare and remove from array (pop)
-
-		return array_filter($arr,function($item) use($filter){
-			return $item != $filter;
-		});
-
-	}*/
-
-	public function getAllFolders($path){
+	public function getAllFolders( $path ) {
 
 		return $this->path->full_path;
 
 	}
 
+	public function __destruct() {
+		// TODO: Implement __destruct() method.
+		echo "Destroying " . __CLASS__ . "\n";
+	}
+
+}
+
+class Extension {
+
+	public $extensions;
+
+	public function __construct( $exts ) {
+		$this->extensions = ( is_array( $exts ) ) ? $exts : array( $exts );
+	}
+
+	public function __toString() {
+		return implode(",",$this->extensions);
+	}
 
 }

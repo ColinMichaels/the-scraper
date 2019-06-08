@@ -18,6 +18,9 @@ class HTML extends Dom {
 	 public function __construct() {
 
 	 	  $this->dom = new Dom;
+	 	  $this->dom->setOptions([
+		      'preserveLineBreaks' => true
+	      ]);
 	 }
 
 }

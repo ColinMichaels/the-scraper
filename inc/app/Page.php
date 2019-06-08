@@ -9,18 +9,9 @@
 
 namespace CM;
 
-class Page extends Scraper {
+class Page {
 
 	public $id, $title, $description, $content, $links, $videos, $slugify, $keywords, $robots, $old_path;
-
-	public function __construct( $path, ?string $exts = null ) {
-		parent::__construct( $path, $exts );
-	}
-
-	public function all() {
-
-		return $this->parent->allPages();
-	}
 
 	public function __toArray() {
 
