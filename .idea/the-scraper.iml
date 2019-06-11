@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/inc/app" isTestSource="false" packagePrefix="CM\" />
       <sourceFolder url="file://$MODULE_DIR$/inc/app/FileTypes" isTestSource="false" packagePrefix="CM\FileTypes\" />
       <sourceFolder url="file://$MODULE_DIR$/inc/app/Interfaces" isTestSource="false" packagePrefix="CM\Interface\" />
+      <excludeFolder url="file://$MODULE_DIR$/public" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cocur/slugify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />

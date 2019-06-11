@@ -52,6 +52,12 @@ class Scraper {
 
 	}
 
+	/**
+	 * @param int|null $limit
+	 * @param int|null $offset
+	 *
+	 * @return array
+	 */
 	public function scrape( ? int $limit = - 1, ? int $offset = - 1 ) {
 
 		$this->setOffset(( $offset ) ?? 0);
@@ -62,13 +68,15 @@ class Scraper {
 
 		$this->filtered = array_values( $this->getFilteredNullFiles( $limit ) );
 
-		$this->allPages();
+		return $this->allPages();
 
 //		$this->createCsv();
 
-		return "done";
 	}
 
+	/**
+	 * @return array
+	 */
 	public function allPages(){
 		$pages = array();
 		$i = 0;
@@ -95,44 +103,23 @@ class Scraper {
 
 			$i++;
 		}
-		
-		 $this->setPages($pages);
-	}
 
+	     $pages_mapped = $this->getArrayValues($pages);
 
-	/**
-	 * @param int $offset
-	 */
-	public function setOffset( int $offset ): void {
-		$this->offset = $offset;
+		return $pages_mapped;
+
 	}
 
 	/**
-	 * @return int
-	 */
-	public function getLimit(): int {
-		return $this->limit;
-	}
-
-	/**
-	 * @param int $limit
-	 */
-	public function setLimit( int $limit ): void {
-		$this->limit = $limit;
-	}
-
-	/**
+	 * @param $pages
+	 *
 	 * @return array
 	 */
-	public function getPages(): array {
-		return $this->pages;
-	}
+	public function getArrayValues($pages){
+		return array_map(function($page){
+			return array_values((array)$page);
+		},$pages); // converts objects to arrays and puts them back in an array
 
-	/**
-	 * @param array $pages
-	 */
-	public function setPages( array $pages ): void {
-		$this->pages = $pages;
 	}
 
 	public function createCsv(){
@@ -197,15 +184,46 @@ class Scraper {
 		return ( $file ) ? ( pathinfo( $file )['extension'] ?? null ) : null;
 	}
 
-	public function getAllFolders( $path ) {
-
-		return $this->path->full_path;
-
-	}
 
 	public function __destruct() {
 		// TODO: Implement __destruct() method.
-		echo "Destroying " . __CLASS__ . "\n";
+//		echo "Destroying " . __CLASS__ . "\n";
+	}
+
+
+	/**
+	 * @param int $offset
+	 */
+	public function setOffset( int $offset ): void {
+		$this->offset = $offset;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLimit(): int {
+		return $this->limit;
+	}
+
+	/**
+	 * @param int $limit
+	 */
+	public function setLimit( int $limit ): void {
+		$this->limit = $limit;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getPages(): array {
+		return $this->pages;
+	}
+
+	/**
+	 * @param array $pages
+	 */
+	public function setPages( array $pages ): void {
+		$this->pages = $pages;
 	}
 
 }

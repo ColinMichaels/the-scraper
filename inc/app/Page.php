@@ -19,13 +19,14 @@ class Page {
 			$this->id,
 			$this->title,
 			$this->content,
+			$this->links,
+			$this->videos,
 			$this->slugify,
 			$this->keywords,
 			$this->description,
-			$this->videos,
+			$this->robots,
 			$this->old_path
 		);
-
 	}
 
 	/**
